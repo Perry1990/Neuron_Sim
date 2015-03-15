@@ -36,7 +36,7 @@ using namespace std;
 #define I_SprThld 1000.0
 #define ms_activePeriod 50
 #define ms_idlePeriod 150
-#define num_presentation 100
+#define num_presentation 30
 #define t_learn 4.0
 
 class channel
@@ -85,7 +85,7 @@ void applyInputPattern(int patternNo, int step)
 	for (i = 0; i < 10; i ++)
 		for (j = 0; j < 10; j ++)
 		{
-			if (rand() % 2000 == 0)
+			if (rand() % 6000 == 0)
 				input_map[i][j] = 0;
 			else
 				input_map[i][j] = 0;
@@ -151,6 +151,51 @@ void applyInputPattern(int patternNo, int step)
 			if (input_map_timing[7][6] == step) input_map[7][6] = I_SprThld;
 			if (input_map_timing[8][3] == step) input_map[8][3] = I_SprThld;
 			if (input_map_timing[8][7] == step) input_map[8][7] = I_SprThld;
+			break;
+		
+		case 6:
+			if (input_map_timing[2][4] == step) input_map[2][4] = I_SprThld;
+			if (input_map_timing[3][3] == step) input_map[3][3] = I_SprThld;
+			if (input_map_timing[3][5] == step) input_map[3][5] = I_SprThld;
+			if (input_map_timing[4][3] == step) input_map[4][3] = I_SprThld;
+			if (input_map_timing[4][5] == step) input_map[4][5] = I_SprThld;
+			if (input_map_timing[5][3] == step) input_map[5][3] = I_SprThld;
+			if (input_map_timing[5][4] == step) input_map[5][4] = I_SprThld;
+			if (input_map_timing[5][5] == step) input_map[5][5] = I_SprThld;
+			if (input_map_timing[6][2] == step) input_map[6][2] = I_SprThld;
+			if (input_map_timing[6][6] == step) input_map[6][6] = I_SprThld;
+			if (input_map_timing[7][2] == step) input_map[7][2] = I_SprThld;
+			if (input_map_timing[7][6] == step) input_map[7][6] = I_SprThld;
+			break;
+		
+		case 7:
+			if (input_map_timing[2][4] == step) input_map[2][4] = I_SprThld;
+			if (input_map_timing[2][3] == step) input_map[2][3] = I_SprThld;
+			if (input_map_timing[2][5] == step) input_map[2][5] = I_SprThld;
+			if (input_map_timing[3][3] == step) input_map[3][3] = I_SprThld;
+			if (input_map_timing[3][5] == step) input_map[3][5] = I_SprThld;
+			if (input_map_timing[4][3] == step) input_map[4][3] = I_SprThld;
+			if (input_map_timing[4][5] == step) input_map[4][5] = I_SprThld;
+			if (input_map_timing[5][3] == step) input_map[5][3] = I_SprThld;
+			if (input_map_timing[5][4] == step) input_map[5][4] = I_SprThld;
+			if (input_map_timing[5][5] == step) input_map[5][5] = I_SprThld;
+			if (input_map_timing[6][3] == step) input_map[6][3] = I_SprThld;
+			if (input_map_timing[6][5] == step) input_map[6][5] = I_SprThld;
+			break;
+			
+		case 8:
+			if (input_map_timing[2][4] == step) input_map[2][4] = I_SprThld;
+			if (input_map_timing[2][3] == step) input_map[2][3] = I_SprThld;
+			if (input_map_timing[3][3] == step) input_map[3][3] = I_SprThld;
+			if (input_map_timing[3][4] == step) input_map[3][4] = I_SprThld;
+			if (input_map_timing[4][3] == step) input_map[4][3] = I_SprThld;
+			if (input_map_timing[4][5] == step) input_map[4][5] = I_SprThld;
+			if (input_map_timing[5][3] == step) input_map[5][3] = I_SprThld;
+			if (input_map_timing[5][4] == step) input_map[5][4] = I_SprThld;
+			if (input_map_timing[5][5] == step) input_map[5][5] = I_SprThld;
+			if (input_map_timing[5][6] == step) input_map[5][6] = I_SprThld;
+			if (input_map_timing[6][2] == step) input_map[6][2] = I_SprThld;
+			if (input_map_timing[6][6] == step) input_map[6][6] = I_SprThld;
 			break;
 			
 		default:
@@ -460,7 +505,7 @@ void displayInfo(bool fileWrite)
 
 void learningModeSim()
 {
-	srand(10);
+	srand(7);
 	test_output = false;
 	cout << std::setprecision(2) << std::fixed;
 	
@@ -506,7 +551,7 @@ void learningModeSim()
 				test_output = true;
 			else test_output = false;*/
 			
-			applyInputPattern(3, j);
+			applyInputPattern(6, j);
 			updateNeurons(_step);
 			updateSynapse(_step);
 			if (j == inj_time)
@@ -541,7 +586,7 @@ void learningModeSim()
 				test_output = true;
 			else test_output = false;*/
 			
-			applyInputPattern(4, j);
+			applyInputPattern(7, j);
 			updateNeurons(_step);
 			updateSynapse(_step);
 			if (j == inj_time)
@@ -567,7 +612,7 @@ void learningModeSim()
 		for (int j = 0; j < ms_activePeriod * 4; j ++)
 		{
 			
-			applyInputPattern(5, j);
+			applyInputPattern(8, j);
 			updateNeurons(_step);
 			updateSynapse(_step);
 			if (j == inj_time)
